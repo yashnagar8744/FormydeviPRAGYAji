@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You 🤍</title>
+
+<style>
+*{box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{
+  margin:0;
+  height:100vh;
+  background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:#fff;
+}
+.card{
+  width:90%;
+  max-width:380px;
+  background:rgba(255,255,255,0.18);
+  backdrop-filter:blur(12px);
+  border-radius:22px;
+  padding:26px;
+  text-align:center;
+}
+input{
+  width:100%;
+  padding:12px;
+  border-radius:12px;
+  border:none;
+  margin-top:14px;
+}
+button{
+  margin-top:16px;
+  padding:12px 24px;
+  border:none;
+  border-radius:30px;
+  font-size:15px;
+  cursor:pointer;
+}
+.primary{background:#fff;color:#ff4d6d;}
+.secondary{background:rgba(255,255,255,0.35);color:#fff;}
+img,video{
+  width:100%;
+  border-radius:16px;
+  margin-top:16px;
+}
+.tap{
+  margin-top:14px;
+  font-size:13px;
+  opacity:0.85;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="screen"></div>
+
+<script>
+const screen = document.getElementById("screen");
+
+/* SCREEN 0 – PASSWORD */
+screen.innerHTML = `
+<h3>This page is password protected 🤍</h3>
+<p>Who is Yash’s apple of his eye?</p>
+<input id="pwd" placeholder="Type your answer here…">
+<p style="font-size:13px;">Hint: She already knows 🫶</p>
+<button class="primary" onclick="check()">Unlock</button>
+`;
+
+function check(){
+  let v = document.getElementById("pwd").value.trim().toLowerCase();
+  if(v.includes("goddess") && v.includes("pragya")){
+    intro();
+  }else{
+    alert("Almost there 🤍");
+  }
+}
+
+/* SCREEN 1 – INTRO */
+function intro(){
+  screen.innerHTML = `
+  <h2>Hi baby… 🤍</h2>
+  <p>I missed you so much, jaan.</p>
+  <div class="tap" onclick="choice()">Tap to continue 🤍</div>
+  `;
+}
+
+/* SCREEN 2 – CHOICE */
+function choice(){
+  screen.innerHTML = `
+  <p>How are you feeling right now?</p>
+  <button class="primary" onclick="apology()">😤 I’m mad at you</button><br>
+  <button class="secondary" onclick="apology()">😔 I’m upset because of you</button>
+  `;
+}
+
+/* SCREEN 3 – APOLOGY (FINAL SELECTED TEXT) */
+function apology(){
+  screen.innerHTML = `
+<p>
+I’m really sorry, baby 🤍<br><br>
+
+Meri hamesha ek hi wish rahi hai —<br>
+ki aap muskurao,<br>
+aap hanso,<br>
+aur uski wajah main banoon.<br><br>
+
+Main kabhi nahi chahta<br>
+ki aap meri kisi bhi baat ki wajah se upset ho,<br><br>
+
+Agar mere paas “anywhere door” hota,<br>
+toh main abhi aapke saamne khada hota,<br>
+kaan pakad kar,<br>
+aankhon mein aankhen daal kar,<br>
+sirf pyaar ke saath ye kehne ke liye —<br>
+I’m sorry 🤍
+</p>
+<div class="tap" onclick="forgive()">Tap to continue 🤍</div>
+`;
+}
+
+/* SCREEN 4 – FORGIVE */
+function forgive(){
+  screen.innerHTML = `
+<img src="photo.jpg">
+<p>Did you forgive me? 🤍</p>
+<button class="primary" onclick="final()">Yes 🤍</button><br>
+<button class="secondary" onclick="final()">We’ll talk when I’m ready</button>
+`;
+}
+
+/* SCREEN 5 – FINAL GIF */
+function final(){
+  screen.innerHTML = `
+<video src="gif.mp4" autoplay loop muted></video>
+<p>Always yours 🤍<br>— Yash</p>
+`;
+}
+</script>
+
+</body>
+</html>
